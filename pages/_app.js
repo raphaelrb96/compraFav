@@ -1,5 +1,6 @@
 import UserProvider from '../context/userContext';
 import React from 'react';
+import "./global.css";
 
 import { ThemeProvider } from 'styled-components';
 
@@ -16,6 +17,7 @@ export default function App({ Component, pageProps }) {
     <>
       <ThemeProvider theme={theme}>
         <UserProvider>
+        
           <Component {...pageProps} />
         </UserProvider>
       </ThemeProvider>

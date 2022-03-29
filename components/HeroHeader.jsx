@@ -127,7 +127,7 @@ const ItemList = ({tit, txt}) => {
 const HeroHeader = ({title, text, img, list}) => {
     return (
         <Grid container>
-            <Grid spacing={5} lg={6} xs={12} item>
+            <Grid lg={6} xs={12} item>
                 <Main>
                     <Conteudo>
                         <Titulo>

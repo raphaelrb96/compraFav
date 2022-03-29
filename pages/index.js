@@ -2,6 +2,8 @@ import Head from 'next/head'
 import React from 'react';
 import { styled } from '@mui/material/styles';
 import { Grid, Typography } from '@mui/material';
+import Topo from '../components/Topo';
+import { Box } from '@mui/system';
 
 
 const Titulo = styled(Typography)`
@@ -12,7 +14,7 @@ const Titulo = styled(Typography)`
   font-size: 50px;
 `;
 
-const Container = styled(Grid)`
+const SubContainer = styled(Grid)`
   align-items: center;
   align-content: center;
   justify-content: center;
@@ -35,27 +37,34 @@ const Item = styled(Grid)`
 
 `;
 
+const Container = styled(Box)`
+`;
+
 export default function Home() {
   
 
   return (
-    <div>
+    <Container>
+      
       <Head>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
         <title>Compra Favorita</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <body>
-        <Container container>
-          <Item justifyItems="center" alignItems="center" item>
-            <Titulo>Compra Favorita</Titulo>
-          </Item>
-          
-        </Container>
-      </body>
+        <main>
+          <Topo />
+          <SubContainer container>
+            <Item justifyItems="center" alignItems="center" item>
+              <Titulo>Compra Favorita</Titulo>
+            </Item>
+            
+          </SubContainer>
+        </main>
         
         
         
-    </div>
+        
+    </Container>
   )
 }
