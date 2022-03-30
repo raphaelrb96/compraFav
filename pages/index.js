@@ -1,9 +1,10 @@
 import Head from 'next/head'
 import React from 'react';
 import { styled } from '@mui/material/styles';
-import { Grid, Typography } from '@mui/material';
+import { Grid, Tab, Tabs, Typography } from '@mui/material';
 import Topo from '../components/Topo';
 import { Box } from '@mui/system';
+import Navbar from '../components/Navbar';
 
 
 const Titulo = styled(Typography)`
@@ -22,7 +23,7 @@ const SubContainer = styled(Grid)`
   text-align: center;
   display: flex;
   flex: 1;
-  height: 90vh;
+  height: 1000px;
   margin: 0;
   padding: 0;
 `;
@@ -40,6 +41,10 @@ const Item = styled(Grid)`
 const Container = styled(Box)`
 `;
 
+const Main = styled(Box)`
+  
+`;
+
 export default function Home() {
   
 
@@ -52,15 +57,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-        <main>
-          <Topo />
+        <Main>
+          <Navbar />
           <SubContainer container>
+            
             <Item justifyItems="center" alignItems="center" item>
               <Titulo>Compra Favorita</Titulo>
             </Item>
             
           </SubContainer>
-        </main>
+        </Main>
         
         
         

@@ -4,11 +4,11 @@ import EmailIcon from '@mui/icons-material/Email';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 
 const Container = styled(Grid)`
-    background-color: rgba(37, 43, 66, 1);
+    background-color: black;
     display: flex;
     flex: 1;
     flex-direction: row;
-    height: 40px;
+    min-height: 30px;
     padding: 0;
     margin: 0;
 `;
@@ -24,6 +24,7 @@ const ContainerItem = styled(Grid)`
 const Texto = styled(Typography)`
     font-size: 12px;
     color: #fff;
+    text-align: center;
 `;
 
 const Email = styled(EmailIcon)`
@@ -52,7 +53,7 @@ const Topo = () => {
                     Compre com desconto de forma segura e rápida
                 </Texto>
             </ContainerItem>
-            <ContainerItem>
+            <ContainerItem sx={{display: {xs: 'none', md: 'flex'}}}>
                 <Email />
                 <Texto>
                     comprafavoritaofc@gmail.com
