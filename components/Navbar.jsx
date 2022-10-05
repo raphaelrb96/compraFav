@@ -6,6 +6,8 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { colorPrimaryDark } from '../utilidades/Cores';
 import Topo from './Topo';
 import PropTypes from 'prop-types';
+import { tabsClasses } from '@mui/material/Tabs';
+import { CATEGORIAS } from '../utilidades/Categoria';
 
 const theme = {
     colors: {
@@ -66,6 +68,7 @@ const Search = styled(Box)`
 
 const MeuAppbar = styled(AppBar)`
     background-color: #fff;
+    
 `;
 
 const EditText = styled(TextField)({
@@ -100,7 +103,7 @@ function HideOnScroll(props) {
         {children}
       </Slide>
     );
-  }
+}
   
   HideOnScroll.propTypes = {
     children: PropTypes.element.isRequired,
@@ -112,8 +115,9 @@ function HideOnScroll(props) {
   };
 
 const Navbar = () => {
+  
     return (
-            <MeuAppbar position='relative'>
+            <MeuAppbar elevation={1} position='relative'>
                 <Topo />
 
                 <Toolbar>
@@ -144,10 +148,14 @@ const Navbar = () => {
                     </ContainerMain>
 
                 </Toolbar>
-                <Tabs aria-label="basic tabs example">
-                    <Tab label="Item One" />
-                    <Tab label="Item Two" />
-                    <Tab label="Item Three" />
+                <Tabs TabScrollButtonProps={{sx: {color: '#000'}}} elevation={1} variant="scrollable" sx={{
+                    [`& .${tabsClasses.scrollButtons}`]: {
+                      '&.Mui-disabled': { opacity: 0.3 },
+                    },
+                  }}>
+                    {CATEGORIAS.map(({id, i}) => <Tab key={i} label={id} value={i} />)}
+                    
+                    
                 </Tabs>
             </MeuAppbar>
     )
