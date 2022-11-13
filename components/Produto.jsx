@@ -44,39 +44,46 @@ const Nome = styled(Typography)`
     }
 `;
 
-const Produto = ({img, nome, valor, comissao, id}) => {
+const Produto = ({img, nome, valor, comissao, id, btTitle}) => {
     const router = useRouter();
 
     const formatNome = () => {
-        if(window.innerWidth > 500) {
+        try {
+            if(window.innerWidth > 500) {
 
-            if (String(nome).length > 44) {
-                return String(nome).substring(0, 44).toLocaleUpperCase() + ' ...';
+                if (String(nome).length > 44) {
+                    return String(nome).substring(0, 44).toLocaleUpperCase() + ' ...';
+                } else {
+                    return String(nome).toLocaleUpperCase();
+                }
+                
             } else {
-                return String(nome).toLocaleUpperCase();
-            }
-            
-        } else {
 
-            if(String(nome).length > 28) {
-                return String(nome).substring(0, 28).toLocaleUpperCase() + ' ...';
-            } else {
-                return String(nome).toLocaleUpperCase()
+                if(String(nome).length > 28) {
+                    return String(nome).substring(0, 28).toLocaleUpperCase() + ' ...';
+                } else {
+                    return String(nome).toLocaleUpperCase()
+                }
+                
             }
-            
-        }
+        } catch(error) {
+            return String(nome).toLocaleUpperCase();
+        } 
+        
+    };
+
+    const navegar = (id, nome) => {
+        const n = String(nome).toLocaleLowerCase();
+        router.push({
+            pathname: `/produto/${id}/${n}`,
+        });
     };
 
     return (
         <Container item lg={3} xs={6} md={4}>
             <Content
                 elevation={1}
-                onClick={() => {
-                    router.push({
-                        pathname: '/produtos/',
-                        query: { id: id },
-                    });
-                }}>
+                onClick={() => navegar(id, nome)}>
                 <Imagem
                     component="img"
                     image={img}
@@ -93,8 +100,9 @@ const Produto = ({img, nome, valor, comissao, id}) => {
                     <Nome variant="body2" lineHeight={1.2}>
                       {formatNome()}
                     </Nome>
+                    
                     <CTA variant='outlined' component="p">
-                        detalhes
+                        {btTitle ? btTitle : 'detalhes'}
                     </CTA>
                 </CardContent>
                 

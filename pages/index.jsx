@@ -88,7 +88,7 @@ export default function Home() {
 
 
   useEffect(() => {
-    if(!user) return;
+    //if(!user) return;
     getFeedMain().then((data) => {
         const {atualizacoesProds} = data;
         console.log(JSON.stringify(data))
@@ -110,7 +110,7 @@ export default function Home() {
       </Head>
 
         <Main>
-          <Navbar />
+          <Navbar logo="./fav.png" />
           <SubContainer container>
 
             <Content feed={feed} />

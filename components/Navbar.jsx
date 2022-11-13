@@ -8,6 +8,7 @@ import Topo from './Topo';
 import PropTypes from 'prop-types';
 import { tabsClasses } from '@mui/material/Tabs';
 import { CATEGORIAS } from '../utilidades/Categoria';
+import { useRouter } from 'next/router';
 
 const theme = {
     colors: {
@@ -114,8 +115,17 @@ function HideOnScroll(props) {
     window: PropTypes.func,
   };
 
-const Navbar = () => {
+const Navbar = ({logo}) => {
   
+    const router = useRouter();
+
+    const navegar = (id, nome) => {
+      const n = String(nome).toLocaleLowerCase();
+      router.push({
+          pathname: `/categoria/${id}/${n}`,
+      });
+    }
+
     return (
             <MeuAppbar elevation={1} position='relative'>
                 <Topo />
@@ -123,7 +133,7 @@ const Navbar = () => {
                 <Toolbar>
                     <ContainerMain container>
                         <Avatar>
-                            <img style={{height: '100%'}} src="./fav.png" alt="favorita" />
+                            <img style={{height: '100%'}} src={logo} alt="favorita" />
                         </Avatar>
                         <ContainerLogo sx={{display: {xs: 'none', sm: 'flex'}}} item>
                             <TextLogo>Compra Favorita</TextLogo>
@@ -153,7 +163,7 @@ const Navbar = () => {
                       '&.Mui-disabled': { opacity: 0.3 },
                     },
                   }}>
-                    {CATEGORIAS.map(({id, i}) => <Tab key={i} label={id} value={i} />)}
+                    {CATEGORIAS.map(({id, i}) => <Tab onClick={() => navegar(i, id)} key={i} label={id} value={i} />)}
                     
                     
                 </Tabs>
